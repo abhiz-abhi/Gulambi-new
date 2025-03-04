@@ -38,7 +38,7 @@ REGULAR_BALL = set([
 ])
 
 # owner username and bot version 
-OWNER_NAME = "Enryu"
+OWNER_NAME = "Amit"
 BOT_VERSION = "1.0"
 
 # Commands
