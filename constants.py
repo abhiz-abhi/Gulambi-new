@@ -6,7 +6,7 @@ import random
 SAFARI = set([])
 NEST_BALL = set([])
 ULTRA_BALL = set([])
-GREAT_BALL = set(["Abra"])
+GREAT_BALL = set([""])
 REGULAR_BALL = set([])
 
 REPEAT_BALL = set([
@@ -24,7 +24,7 @@ REPEAT_BALL = set([
 ])
 
 # Owner and Bot Information
-OWNER_NAME = "Enryu"
+OWNER_NAME = "Amit"
 BOT_VERSION = "1.0"
 
 # Commands
