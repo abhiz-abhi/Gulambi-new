@@ -12,7 +12,7 @@ NEST_BALL = set([
 ])
 
 REPEAT_BALL = set([
- "Abomasnow", "Aerodactyl", "Ampharos", "Beldum", "Beedrill", "Blacephalon",
+"Abomasnow", "Aerodactyl", "Ampharos", "Beldum", "Beedrill", "Blacephalon",
 "Blastoise", "Cobalion", "Cosmoem", "Cosmog", "Delphox", "Deoxys",
 "Dhelmise", "Abomasnow", "Arceus", "Darkrai", "Dialga", "Empoleon",
 "Gallade", "Gardevoir", "Giratina", "Goodra", "Gyarados", "Landorus",
@@ -39,7 +39,7 @@ GREAT_BALL = set([
 ])
 
 REGULAR_BALL = set([
- "Abra", "Alakazam", "Buneary", "Cyndaquil", "Dartrix", "Espeon",
+"Abra", "Alakazam", "Buneary", "Cyndaquil", "Dartrix", "Espeon",
 "Gabite", "Gible", "Goomy", "Jolteon", "Kadabra", "Kleavor",
 "Lilligant", "Lopunny", "Munchlax", "Porygon", "Porygon2", "Porygon-Z",
 "Quilava", "Rotom", "Rowlet", "Rufflet", "Sliggoo", "Snorlax",
