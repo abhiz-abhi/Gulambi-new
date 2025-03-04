@@ -28,7 +28,7 @@ REGULAR_BALL = set([
 "Wishiwashi", "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime"
 ])
 
-REPEAT_BALL = set(
+REPEAT_BALL = set([
 "Abomasnow", "Aerodactyl", "Ampharos", "Beldum", "Beedrill", "Blacephalon",
 "Blastoise", "Cobalion", "Cosmoem", "Cosmog", "Delphox", "Deoxys",
 "Dhelmise", "Abomasnow", "Arceus", "Darkrai", "Dialga", "Empoleon",
