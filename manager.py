@@ -11,30 +11,30 @@ from hunter import PokemonHuntingEngine
 from afk import AFKManager  
 from alive import AliveHandler  # Import AliveHandler
 
-HELP_MESSAGE = """Help
+HELP_MESSAGE = """**Help**
 
-• .ping - Pong
-• .alive - Bot status
-• .help - Help menu
-• .guess (on/off/stats) - any guesses?
-• .hunt (on/off/stats) - hunting for poki
-• .list <category> - List Pokémon by category
-• .afk (message) - Set AFK status
-• .unafk - Disable AFK status
+• `.ping` - Pong
+• `.alive` - Bot status
+• `.help` - Help menu
+• `.guess` (on/off/stats) - any guesses?
+• `.hunt` (on/off/stats) - hunting for poki
+• `.list <category>` - List Pokémon by category
+• `.afk (message)` - Set AFK status
+• `.unafk` - Disable AFK status
 
-**Available Categories for .list**
-- regular
-- repeat
-- ultra
-- great
-- nest
-- safari
+**Available Categories for `.list`**
+- `regular`
+- `repeat`
+- `ultra`
+- `great`
+- `nest`
+- `safari`
 """
 
 class Manager:
     """Manages automation for the Userbot."""
 
-    slots = (
+    __slots__ = (
         '_client',
         '_guesser',
         '_hunter',
@@ -43,7 +43,7 @@ class Manager:
         '_alive_handler'
     )
 
-    def init(self, client) -> None:
+    def __init__(self, client) -> None:
         self._client = client
         self._guesser = PokemonIdentificationEngine(client)
         self._hunter = PokemonHuntingEngine(client)
@@ -62,22 +62,22 @@ class Manager:
         # Add AFK event handlers
         for handler in self._afk_manager.get_event_handlers():
             self._client.add_event_handler(handler['callback'], handler['event'])
-            logger.debug(f'[{self.class.name}] Added AFK event handler: {handler["callback"].__name__}')
+            logger.debug(f'[{self.__class__.__name__}] Added AFK event handler: {handler["callback"].__name__}')
 
-        # Register event handlers
+        # Register other event handlers
         for handler in self.event_handlers:
             self._client.add_event_handler(handler['callback'], handler['event'])
-            logger.debug(f'[{sclasssnameme__}] Added event handler: {handler["callback"].__name__}')
+            logger.debug(f'[{self.__class__.__name__}] Added event handler: {handler["callback"].__name__}')
 
     async def ping_command(self, event) -> None:
-        """Handles the .ping command."""
+        """Handles the `.ping` command."""
         start = time.time()
         await event.edit('...')
         ping_ms = (time.time() - start) * 1000
         await event.edit(f'Pong!!\n{ping_ms:.2f}ms')
 
     async def help_command(self, event) -> None:
-        """Handles the .help command."""
+        """Handles the `.help` command."""
         await event.edit(HELP_MESSAGE)
 
     async def handle_guesser_automation_control_request(self, event) -> None:
@@ -89,7 +89,7 @@ class Manager:
         await self._hunter.handle_automation_control_request(event)
 
     async def list_pokemon(self, event) -> None:
-        """Handles the .list command by showing Pokémon based on the specified category."""
+        """Handles the `.list` command by showing Pokémon based on the specified category."""
         args = event.pattern_match.group(1)
 
         categories = {
@@ -101,31 +101,31 @@ class Manager:
             "safari": constants.SAFARI
         }
 
-        if not args:  
+        if not args:
             await event.edit(
-             Usage:e:** .list <category>\n\n"
-             Available categories:s:**\n"
-                "- regular\n"
-                "- repeat\n"
-                "- ultra\n"
-                "- great\n"
-                "- nest\n"
-                "- safari"
+                "**Usage:** `.list <category>`\n\n"
+                "**Available categories:**\n"
+                "- `regular`\n"
+                "- `repeat`\n"
+                "- `ultra`\n"
+                "- `great`\n"
+                "- `nest`\n"
+                "- `safari`"
             )
             return
 
         category = args.lower()
         if category not in categories:
-            await event.ediInvalid category!y!**\nUse one of: {', '.join(categories.keys())}")
+            await event.edit(f"**Invalid category!**\nUse one of: {', '.join(categories.keys())}")
             return
 
-pokemon_list = categories[category]
+        pokemon_list = categories[category]
         if not pokemon_list:
-            await event.edit(f"No Pokémon found in {category} category.")
+            await event.edit(f"No Pokémon found in `{category}` category.")
             return
 
         formatted_list = ", ".join(sorted(pokemon_list))  
-        await event.edit(f"{category.capitalize()} Ball Pokémon:\n{formatted_list}")
+        await event.edit(f"**{category.capitalize()} Ball Pokémon:**\n{formatted_list}")
 
     @property
     def event_handlers(self) -> List[Dict[str, Callable | events.NewMessage]]:
@@ -136,4 +136,4 @@ pokemon_list = categories[category]
             {'callback': self.handle_guesser_automation_control_request, 'event': events.NewMessage(pattern=constants.GUESSER_COMMAND_REGEX, outgoing=True)},
             {'callback': self.handle_hunter_automation_control_request, 'event': events.NewMessage(pattern=constants.HUNTER_COMMAND_REGEX, outgoing=True)},
             {'callback': self.list_pokemon, 'event': events.NewMessage(pattern=constants.LIST_COMMAND_REGEX, outgoing=True)}
-    ]
+        ]
