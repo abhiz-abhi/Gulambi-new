@@ -58,8 +58,8 @@ AFK_COMMAND_REGEX = r'^\.afk(?: |$)(.*)'  # Matches `.afk` or `.afk <message>`
 UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 
 # Timing and Limits
-COOLDOWN = lambda: random.randint(3, 6)
-PERIODICALLY_GUESS_SECONDS = 120
+COOLDOWN = lambda: random.randint(2, 3)
+PERIODICALLY_GUESS_SECONDS = 20
 PERIODICALLY_HUNT_SECONDS = 300
 HEXA_BOT_ID = 572621020
 
