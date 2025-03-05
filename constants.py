@@ -22,7 +22,15 @@ REGULAR_BALL = set([
         "Shellder", "Snorlax", "Squirtle", "Staravia", "Starly", "Staryu", "Swanna", 
         "Teddiursa", "Tentacool", "Tentacruel", "Thwackey", "Timburr", "Togepi", "Togetic",
         "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi",
-        "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime"
+        "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime",
+        "Overqwil", "Voltorb", "Ursaring", "Wyrdeer", "Zorua", "Zoroark",
+        "Sneasler", "Fuecoco", "Crocalor", "Skeledirge", "Nymble", "Lokix",
+        "Pawmi", "Pawmo", "Pawmot", "Nacli", "Naclstack", "Charcadet",
+        "Armarouge", "Ceruledge", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai",
+        "Toedscool", "Toedscruel", "Scovillain", "Capsakid", "Tinkatink", "Tinkatuff",
+        "Finizen", "Palafin", "Great Tusk", "Flutter Mane", "Iron Treads", "Iron Bundle",
+        "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax",
+        "Gholdengo", "Roaring Moon", "Iron Valiant"
 ])
      
 REPEAT_BALL = set([
@@ -37,7 +45,9 @@ REPEAT_BALL = set([
         "Rillaboom", "Rotom", "Sceptile", "Shaymin", "Spectrier", "Starmie", "Slakoth",
         "Terrakion", "Togekiss", "Turtonator", "Ursaring", "Venusaur", "Victini", "Vigoroth",
         "Virizion", "Xerneas", "Yveltal", "Zacian", "Zamazenta", "Zapdos", "Zekrom", "Zeraora", 
-        "Zygarde", "Arceus", "Darkrai", "Empoleon", "Goodra", "Lopunny", "Thundurus"
+        "Zygarde", "Arceus", "Darkrai", "Empoleon", "Goodra", "Lopunny", "Thundurus","Koraidon",
+        "Miraidon", "Iron Leaves", "Gouging Fire", "Iron Boulder", "Iron Crown",
+        "Raging Bolt", "Terapagos"
 ])
 
 # Owner and Bot Information
@@ -58,7 +68,7 @@ AFK_COMMAND_REGEX = r'^\.afk(?: |$)(.*)'  # Matches `.afk` or `.afk <message>`
 UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 
 # Timing and Limits
-COOLDOWN = lambda: random.randint(1, 2)
+COOLDOWN = lambda: random.randint(1, 1.5)
 PERIODICALLY_GUESS_SECONDS = 25
 PERIODICALLY_HUNT_SECONDS = 250
 HEXA_BOT_ID = 572621020
