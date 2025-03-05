@@ -21,7 +21,7 @@ REGULAR_BALL = set([
         "Primeape", "Quilava", "Rhyhorn", "Rookidee", "Rowlet", "Rufflet", "Shelgon", 
         "Shellder", "Snorlax", "Squirtle", "Staravia", "Starly", "Staryu", "Swanna", 
         "Teddiursa", "Tentacool", "Tentacruel", "Thwackey", "Timburr", "Togepi", "Togetic",
-        "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi", 
+        "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi",
         "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime"
 ])
      
