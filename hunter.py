@@ -550,9 +550,9 @@ class PokemonHuntingEngine:
                                     logger.warning(warning)
                                     return
                                 if ball_name not in available_balls:
-                                    warning = f"Looks Like You don't have enough {ball_name} balls. using default {available_balls[-1]} ball."
-                                    await event.reply(message=warning)
-                                    logger.warning(warning)
+                                    warning = f"Looks like you don't have enough {ball_name} balls. Please buy more before hunting."
+                                    await self._client.send_message(entity=constants.CHAT_ID, message=warning)
+                                    logger.warning(warning)   
                                     ball_name = available_balls[-1]
                                 await self._click_button(event=event, text=ball_name)
                                 logger.debug(f"Clicked on {ball_name} Ball for {pok_name}.")
@@ -644,4 +644,4 @@ class PokemonHuntingEngine:
             {'callback': self.handle_after_battle, 'event': events.MessageEdited(chats=constants.HEXA_BOT_ID)},
             {'callback': self.skip, 'event': events.NewMessage(chats=constants.HEXA_BOT_ID)},
             {'callback': self.pokeSwitch, 'event': events.MessageEdited(chats=constants.HEXA_BOT_ID)}
-        ]
+    ]
