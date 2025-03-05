@@ -483,7 +483,7 @@ class PokemonHuntingEngine:
             if wild_pokemon_hp_match:
                 self.activity_monitor.record_activity(activity_type=ActivityType.MESSAGE_SENT)
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
-                if wild_max_hp <= 50:
+                if wild_max_hp <= 100:
                     logger.debug(f"{pok_name} is low level (HP: {wild_max_hp}), using Poke Balls directly.")
                     await asyncio.sleep(constants.COOLDOWN())
                     try:
