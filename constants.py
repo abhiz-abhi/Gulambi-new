@@ -70,7 +70,7 @@ UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 # Timing and Limits
 COOLDOWN = lambda: random.randint(1, 1.5)
 PERIODICALLY_GUESS_SECONDS = 25
-PERIODICALLY_HUNT_SECONDS = 250
+PERIODICALLY_HUNT_SECONDS = 150
 HEXA_BOT_ID = 572621020
 
 # API Credentials
