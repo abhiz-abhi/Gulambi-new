@@ -8,7 +8,7 @@ NEST_BALL = set([])
 ULTRA_BALL = set([])
 GREAT_BALL = set([])
 REGULAR_BALL = set([
-    "Abra", "Alakazam", "Applin", "Arrokuda", "Axew", "Barraskewda", "Bagon", 
+        "Abra", "Alakazam", "Applin", "Arrokuda", "Axew", "Barraskewda", "Bagon", 
         "Braixen", "Brionne", "Buneary", "Chimchar", "Charmander", "Charmeleon", 
         "Cinccino", "Conkeldurr", "Cryogonal", "Cutiefly", "Cyndaquil", "Dartrix", 
         "Darumaka", "Dracovish", "Dracozolt", "Dragonair", "Dratini", "Druddigon", 
@@ -58,9 +58,9 @@ AFK_COMMAND_REGEX = r'^\.afk(?: |$)(.*)'  # Matches `.afk` or `.afk <message>`
 UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 
 # Timing and Limits
-COOLDOWN = lambda: random.randint(3, 6)
-PERIODICALLY_GUESS_SECONDS = 120
-PERIODICALLY_HUNT_SECONDS = 300
+COOLDOWN = lambda: random.randint(2, 3)
+PERIODICALLY_GUESS_SECONDS = 25
+PERIODICALLY_HUNT_SECONDS = 250
 HEXA_BOT_ID = 572621020
 
 # API Credentials
