@@ -41,7 +41,7 @@ REPEAT_BALL = set([
 ])
 
 # Owner and Bot Information
-OWNER_NAME = "Amit("
+OWNER_NAME = "Amit"
 BOT_VERSION = "1.0"
 
 # Commands
