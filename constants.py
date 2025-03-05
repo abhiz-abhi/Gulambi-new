@@ -30,7 +30,7 @@ REGULAR_BALL = set([
     "Toedscool", "Toedscruel", "Scovillain", "Capsakid", "Tinkatink", "Tinkatuff", 
     "Finizen", "Palafin", "Great Tusk", "Flutter Mane", "Iron Treads", "Iron Bundle", 
     "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax", 
-    "Gholdengo", "Roaring Moon", "Iron Valiant"
+    "Gholdengo", "Roaring Moon", "Iron Valiant", "Sliggoo"
 ])
      
 REPEAT_BALL = set([
