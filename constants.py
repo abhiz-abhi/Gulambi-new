@@ -8,6 +8,32 @@ NEST_BALL = set([])
 ULTRA_BALL = set([])
 GREAT_BALL = set([])
 REGULAR_BALL = set([
+    "Abra", "Alakazam", "Applin", "Arrokuda", "Axew", "Barraskewda", 
+    "Bagon", "Braixen", "Brionne", "Buneary", "Chimchar", "Charmander", 
+    "Charmeleon", "Cinccino", "Conkeldurr", "Cryogonal", "Cutiefly", "Cyndaquil", 
+    "Dartrix", "Darumaka", "Dracovish", "Dracozolt", "Dragonair", "Dratini", 
+    "Druddigon", "Ducklett", "Dwebble", "Espeon", "Fennekin", "Flabebe", "Floette", "Frillish", 
+    "Fraxure", "Gabite", "Gible", "Golett", "Goomy", "Grookey", "Grovyle", "Gurdurr", 
+    "Hawlucha", "Heracross", "Impidimp", "Kadabra", "Lampent", "Lapras", "Litwick", 
+    "Lombre", "Lopunny", "Lotad", "Magikarp", "Mankey", "Mareanie", "Mimikyu", 
+    "Monferno", "Morgrem", "Morpeko", "Munchlax", "Oranguru", "Orbeetle", "Phantump", 
+    "Piplup", "Porygon", "Porygon2", "Porygon-Z", "Popplio", "Prinplup", "Primarina", 
+    "Primeape", "Quilava", "Rhyhorn", "Rookidee", "Rowlet", "Rufflet", "Shelgon", 
+    "Shellder", "Snorlax", "Squirtle", "Staravia", "Starly", "Staryu", "Swanna", 
+    "Teddiursa", "Tentacool", "Tentacruel", "Thwackey", "Timburr", "Togepi", "Togetic", 
+    "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi", 
+    "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime", 
+    "Overqwil", "Voltorb", "Ursaring", "Wyrdeer", "Zorua", "Zoroark", 
+    "Sneasler", "Fuecoco", "Crocalor", "Skeledirge", "Nymble", "Lokix", 
+    "Pawmi", "Pawmo", "Pawmot", "Nacli", "Naclstack", "Charcadet", 
+    "Armarouge", "Ceruledge", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai", 
+    "Toedscool", "Toedscruel", "Scovillain", "Capsakid", "Tinkatink", "Tinkatuff", 
+    "Finizen", "Palafin", "Great Tusk", "Flutter Mane", "Iron Treads", "Iron Bundle", 
+    "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax", 
+    "Gholdengo", "Roaring Moon", "Iron Valiant"
+])
+     
+REPEAT_BALL = set([
     "Abomasnow", "Aerodactyl", "Ampharos", "Beldum", "Beedrill", "Blacephalon",
     "Blastoise", "Cobalion", "Cosmoem", "Cosmog", "Delphox", "Deoxys",
     "Dhelmise", "Dialga", "Drakloak", "Duraludon", "Darmanitan", "Eternatus",
@@ -24,20 +50,6 @@ REGULAR_BALL = set([
     "Zygarde", "Arceus", "Darkrai","Empoleon", "Goodra", "Lopunny",
     "Thundurus", "Koraidon", "Miraidon", "Iron Leaves", "Gouging Fire", "Iron Boulder",
     "Iron Crown", "Raging Bolt", "Terapagos"
-])
-     
-REPEAT_BALL = set([
-    "Venusaur", "Charizard", "Blastoise", "Beedrill", "Alakazam", "Slowbro",
-    "Mewtwo", "Aerodactyl", "Ampharos", "Steelix", "Scizor",
-    "Sceptile", "Blaziken", "Swampert", "Gardevoir", "Sableye", "Mawile",
-    "Aggron", "Medicham", "Manectric", "Sharpedo", "Camerupt", "Altaria", "Banette", "Absol", "Glalie",
-    "Metagross", "Lucario", "Abomasnow", "Gallade", "Audino",
-    "Blacephalon", "Buzzwole", "Cobalion", "Cosmog", "Cosmoem", "Deoxys", "Diancie", "Dialga",
-    "Eternatus", "Genesect", "Giratina", "Glastrier", "Groudon", "Ho-oh", "Hoopa", "Jirachi",
-    "Kartana", "Keldeo", "Kubfu", "Kyogre", "Kyurem", "Landorus", "Lugia", "Magearna", "Marshadow",
-    "Necrozma", "Palkia", "Pheromosa", "Rayquaza", "Regieleki", "Regigigas", "Reshiram",
-    "Shaymin", "Spectrier", "Terrakion", "Victini", "Virizion", "Xerneas", "Yveltal", "Zacian",
-    "Zamazenta", "Zekrom", "Zeraora", "Zygarde"
 ])
 
 # Owner and Bot Information
