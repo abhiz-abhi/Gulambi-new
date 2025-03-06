@@ -47,7 +47,7 @@ POKEMON_TEAM = [
 ]   # Add your preferred Pokémon for hunting here
 
 # Owner and Bot Information
-OWNER_NAME = "Lassi"
+OWNER_NAME = "Amit"
 BOT_VERSION = "1.0"
 
 # Commands
