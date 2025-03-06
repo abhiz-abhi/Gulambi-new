@@ -36,8 +36,8 @@ REPEAT_BALL = set([])
 
 # Hunting Team
 POKEMON_TEAM = [
-    "Applin", "Abomasnow", "Golurk",
-    "Gardevoir", "Arceus", "Xerneas"
+    "Aerodactyl", "Altaria", "Golurk",
+    "Gallade", "Lilligant", "Xerneas"
 ]   # Add your preferred Pokémon for hunting here
 
 # Owner and Bot Information
