@@ -576,20 +576,22 @@ class PokemonHuntingEngine:
             self.activity_monitor.record_activity(activity_type=ActivityType.ITEM_FOUND, value=f"{stone.capitalize()} stone")
             await self._transmit_hunt_command()
 
-  
-    async def pokeSwitch(self, event):
+    async def pokeSwitch(self, event: events.MessageEdited.Event) -> None:
+        """Automatically switches Pokémon in battle in order (not random)."""
         substring = 'Choose your next pokemon.'
         if (
             substring in event.raw_text and
             self.automation_orchestrator.is_automation_active
-           ):
-            buttons_to_click = constants.POKEMON_TEAM
-            for button in buttons_to_click:
-               try:
-                   await event.click(text=button)
-               except MessageIdInvalidError:
-                   logger.exception(f'Failed to click button: `{button}`')
-
+        ):
+            for button in constants.POKEMON_TEAM:  # Iterate over Pokémon team in order
+                try:
+                    await event.click(text=button)  # Click first available Pokémon
+                    logger.info(f"Switched to Pokémon: {button}")
+                    break  # Stop looping after first successful switch
+                except MessageIdInvalidError:
+                    logger.exception(f'Failed to click button: `{button}`')
+                except Exception as e:
+                    logger.exception(f"Unexpected error switching Pokémon: {e}")
 
     @property
     def event_handlers(self) -> List[Dict[str, Callable | events.NewMessage]]:
@@ -602,4 +604,4 @@ class PokemonHuntingEngine:
             {'callback': self.handle_after_battle, 'event': events.MessageEdited(chats=constants.HEXA_BOT_ID)},
             {'callback': self.skip, 'event': events.NewMessage(chats=constants.HEXA_BOT_ID)},
             {'callback': self.pokeSwitch, 'event': events.MessageEdited(chats=constants.HEXA_BOT_ID)}
-    ]
+        ]
