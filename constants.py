@@ -8,52 +8,40 @@ NEST_BALL = set([])
 ULTRA_BALL = set([])
 GREAT_BALL = set([])
 REGULAR_BALL = set([
-    "Abra", "Alakazam", "Applin", "Arrokuda", "Axew", "Barraskewda", 
-    "Bagon", "Braixen", "Brionne", "Buneary", "Chimchar", "Charmander", 
-    "Charmeleon", "Cinccino", "Conkeldurr", "Cryogonal", "Cutiefly", "Cyndaquil", 
-    "Dartrix", "Darumaka", "Dracovish", "Dracozolt", "Dragonair", "Dratini", 
-    "Druddigon", "Ducklett", "Dwebble", "Espeon", "Fennekin", "Flabebe", "Floette", "Frillish", 
-    "Fraxure", "Gabite", "Gible", "Golett", "Goomy", "Grookey", "Grovyle", "Gurdurr", 
-    "Hawlucha", "Heracross", "Impidimp", "Kadabra", "Lampent", "Lapras", "Litwick", 
-    "Lombre", "Lopunny", "Lotad", "Magikarp", "Mankey", "Mareanie", "Mimikyu", 
-    "Monferno", "Morgrem", "Morpeko", "Munchlax", "Oranguru", "Orbeetle", "Phantump", 
-    "Piplup", "Porygon", "Porygon2", "Porygon-Z", "Popplio", "Prinplup", "Primarina", 
-    "Primeape", "Quilava", "Rhyhorn", "Rookidee", "Rowlet", "Rufflet", "Shelgon", 
-    "Shellder", "Snorlax", "Squirtle", "Staravia", "Starly", "Staryu", "Swanna", 
-    "Teddiursa", "Tentacool", "Tentacruel", "Thwackey", "Timburr", "Togepi", "Togetic", 
-    "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi", 
-    "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime", 
-    "Overqwil", "Voltorb", "Ursaring", "Wyrdeer", "Zorua", "Zoroark", 
-    "Sneasler", "Fuecoco", "Crocalor", "Skeledirge", "Nymble", "Lokix", 
-    "Pawmi", "Pawmo", "Pawmot", "Nacli", "Naclstack", "Charcadet", 
-    "Armarouge", "Ceruledge", "Maschiff", "Mabosstiff", "Shroodle", "Grafaiai", 
-    "Toedscool", "Toedscruel", "Scovillain", "Capsakid", "Tinkatink", "Tinkatuff", 
-    "Finizen", "Palafin", "Great Tusk", "Flutter Mane", "Iron Treads", "Iron Bundle", 
-    "Iron Hands", "Iron Jugulis", "Iron Moth", "Iron Thorns", "Frigibax", "Arctibax", 
-    "Gholdengo", "Roaring Moon", "Iron Valiant", "Sliggoo"
-])
-     
-REPEAT_BALL = set([
-    "Abomasnow", "Aerodactyl", "Ampharos", "Beldum", "Beedrill", "Blacephalon",
-    "Blastoise", "Cobalion", "Cosmoem", "Cosmog", "Delphox", "Deoxys",
-    "Dhelmise", "Dialga", "Drakloak", "Duraludon", "Darmanitan", "Eternatus",
-    "Gallade", "Gardevoir", "Genesect", "Giratina", "Glastrier", "Golisopod", 
-    "Golurk", "Greninja", "Groudon", "Gyarados", "Haxorus", "Ho-oh", 
-    "Hoopa", "Jellicent", "Jirachi", "Jolteon", "Kartana", "Keldeo", 
-    "Kubfu", "Kyogre", "Kyurem", "Landorus", "Lapras", "Lugia", 
-    "Ludicolo", "Magearna", "Marshadow", "Meloetta", "Metang", "Mewtwo", 
-    "Necrozma", "Palkia", "Pheromosa", "Charizard", "Rayquaza", "Regieleki", 
-    "Regigigas", "Reshiram","Rillaboom", "Rotom", "Sceptile", "Shaymin",
-    "Spectrier", "Starmie", "Slakoth","Terrakion", "Togekiss", "Turtonator",
-    "Ursaring", "Venusaur", "Victini", "Vigoroth","Virizion", "Xerneas",
-    "Yveltal", "Zacian", "Zamazenta", "Zapdos", "Zekrom", "Zeraora",
-    "Zygarde", "Arceus", "Darkrai","Empoleon", "Goodra", "Lopunny",
-    "Thundurus", "Koraidon", "Miraidon", "Iron Leaves", "Gouging Fire", "Iron Boulder",
-    "Iron Crown", "Raging Bolt", "Terapagos"
+    "Magikarp", "Darumaka", "Darmanitan", "Wishiwashi", "Drakloak", "Duraludon", "Rotom", 
+    "Tentacruel", "Snorlax", "Overqwil", "Munchlax", "Kleavor", "Fennekin", "Delphox", "Braixen", 
+    "Axew", "Fraxure", "Haxorus", "Floette", "Flabebe", "Rufflet", "Porygon", "Porygon2", "Mankey", 
+    "Primeape", "Dratini", "Shellder", "Gible", "Gabite", "Dragonair", "Golett", "Goomy", "Vikavolt", 
+    "Vullaby", "Litwick", "Lampent", "Wimpod", "Buneary", "Ursaring", "Teddiursa", "Hawlucha", "Abra", 
+    "Kadabra", "Turtonator", "Jolteon", "Dwebble", "Crustle", "Starly", "Stantler", "Rhyhorn", "Staryu", 
+    "Starmie", "Tauros", "Lapras", "Vaporeon", "Cyndaquil", "Quilava", "Typhlosion", "Totodile", "Croconaw", 
+    "Feraligatr", "Espeon", "Slakoth", "Vigoroth", "Lotad", "Lombre", "Ludicolo", "Treecko", "Grovyle", 
+    "Electrike", "Growlithe", "Monferno", "Piplup", "Prinplup", "Chimchar", "Sirfetch'd", 
+    "Staravia", "Bagon", "Shelgon", "Salamence", "Tepig", "Pignite", "Spiritomb", "Togekiss", "Skorupi", 
+    "Drilbur", "Timburr", "Gurdurr", "Scraggy", "Scrafty", "Cofagrigus", "Zorua", "Zoroark", "Cinccino", 
+    "Frillish", "Jellicent", "Karrablast", "Escavalier", "Ferroseed", "Mienfoo", "Mienshao", "Cryogonal", 
+    "Shelmet", "Accelgor", "Helioptile", "Heliolisk", "Tyrunt", "Tyrantrum", "Sylveon", "Litleo", "Pyroar", 
+    "Chespin", "Quilladin", "Chesnaught", "Durant", "Deino", "Phantump", "Trevenant", "Pumpkaboo", "Gourgeist", 
+    "Popplio", "Brionne", "Litten", "Torracat", "Rowlet", "Dartrix", "Grookey", "Thwackey", "Rillaboom", 
+    "Scorbunny", "Raboot", "Orbeetle", "Rookidee", "Corvisquire", "Sobble", "Drizzile", "Inteleon", "Dracozolt", 
+    "Dracovish", "Morpeko", "Sneasler", "Toxapex", "Mareanie", "Volcarona", "Tentacool", "Larvesta", 
+    "Charmeleon", "Charmander", "Togetic", "Togepi", "Druddigon", "Dhelmise", "Runerigus", "Lucario", 
+    "Unfezant", "Tranquill", "Pidove", "Barraskewda", "Arrokuda", "Zubat", "Golbat", "Gastly", "Haunter", 
+    "Clauncher", "Clawitzer", "Froslass", "Cutiefly", "Ribombee", "Arctozolt", "Arctovish", "Chewtle", 
+    "Cufant", "Impidimp", "Morgrem", "Hatenna", "Hattrem", "Trumbeak", "Charjabug", "Rockruff", "Mudbray", 
+    "Bounsweet", "Steenee", "Sliggoo", "Squirtle", "Wartortle", "Mantine", "Mantyke", "Gligar", "Gliscor", "Abra"
 ])
 
+REPEAT_BALL = set([])
+
+# Hunting Team
+POKEMON_TEAM = [
+    "Applin", "Abomasnow", "Golurk",
+    "Gardevoir", "Arceus", "Xerneas"
+]   # Add your preferred Pokémon for hunting here
+
 # Owner and Bot Information
-OWNER_NAME = "Amit"
+OWNER_NAME = "Lassi"
 BOT_VERSION = "1.0"
 
 # Commands
@@ -70,10 +58,14 @@ AFK_COMMAND_REGEX = r'^\.afk(?: |$)(.*)'  # Matches `.afk` or `.afk <message>`
 UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 
 # Timing and Limits
-COOLDOWN = lambda: random.randint(3, 4)
-PERIODICALLY_GUESS_SECONDS = 25
-PERIODICALLY_HUNT_SECONDS = 180
-HEXA_BOT_ID = 572621020
+COOLDOWN = lambda: random.randint(3, 6)  # Random cooldown between 3 and 6 seconds
+PERIODICALLY_GUESS_SECONDS = 120  # Guess cooldown
+PERIODICALLY_HUNT_SECONDS = 300  # Hunt cooldown (5 minutes)
+HEXA_BOT_ID = 572621020  # ID of the Hexa bot
+
+# Auto-Battle Constants
+HUNT_DAILY_LIMIT_REACHED = "Daily hunt limit reached. Auto-battle stopped."
+SHINY_FOUND = "Shiny Pokémon found! Auto-battle stopped for {0}."
 
 # API Credentials
 API_ID = int(os.getenv('API_ID'))
