@@ -456,7 +456,7 @@ class PokemonHuntingEngine:
 
         elif "A wild" in event.raw_text:
             self.activity_monitor.record_activity(activity_type=ActivityType.RESPONSE_RECEIVED)
-            pok_name = re.search(r"A wild (.+?) \(", event.raw_text)
+            pok_name = event.raw_text.split("wild ")[1].split(" (")[0].strip()
             logger.debug(f"Wild Pokemon encountered: {pok_name}")
             for ball_name in POKEBALL_BUTTON_TEXT_MAP:
                 if pok_name in getattr(constants, f'{ball_name.upper()}_BALL', []):
