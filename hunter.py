@@ -456,7 +456,9 @@ class PokemonHuntingEngine:
 
         elif "A wild" in event.raw_text:
             self.activity_monitor.record_activity(activity_type=ActivityType.RESPONSE_RECEIVED)
-            pok_name = event.raw_text.split("wild ")[1].split(" (")[0].strip()
+            name_match = re.search(r"A wild (.+?) \(", event.raw_text)
+        elif name_match:
+            pok_name = name_match.group(1).strip()
             logger.debug(f"Wild Pokemon encountered: {pok_name}")
             for ball_name in POKEBALL_BUTTON_TEXT_MAP:
                 if pok_name in getattr(constants, f'{ball_name.upper()}_BALL', []):
@@ -476,10 +478,12 @@ class PokemonHuntingEngine:
     async def battlefirst(self, event):
         substring = 'Battle begins!'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild (\w+) \[.*\]\nLv\. \d+  •  HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
+          
           if wild_pokemon_name_match:
             pok_name = wild_pokemon_name_match.group(1).strip()
-            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+  •  HP (\d+)/(\d+)", event.raw_text)
+            
+            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+\s+•\s+HP (\d+)/(\d+)", event.raw_text)
 
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
@@ -507,21 +511,24 @@ class PokemonHuntingEngine:
     async def battle(self, event):
         substring = 'Wild'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild (\w+) \[.*\]\nLv\. \d+  •  HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
           if wild_pokemon_name_match:
-            pok_name = wild_pokemon_name_match.group(1)
+            pok_name = wild_pokemon_name_match.group(1).strip()
             wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+  •  HP (\d+)/(\d+)", event.raw_text)
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 wild_current_hp = int(wild_pokemon_hp_match.group(1))
-                wild_health_percentage = self._calculate_health_percentage(wild_max_hp, wild_current_hp)
+                
                 if wild_current_hp > 90:
                     await asyncio.sleep(1)
                     try:
                         await event.click(0, 0)
-                    except MessageIdInvalidError:
-                        logger.exception(f"Failed to click the button for {pok_name} with high health")
-                elif wild_current_hp <= 90:
+                    except (DataInvalidError, MessageIdInvalidError) as e:
+                        logger.warning(f'Failed to click first option for high-level {pok_name}: {e}')
+                    except Exception as e:
+                        logger.exception(f'Unexpected error clicking first option for high-level {pok_name}: {e}')
+                    
+                if wild_current_hp <= 90:
                     await asyncio.sleep(1)
                     try:
                         await event.click(text="Poke Balls")
