@@ -23,7 +23,7 @@ REGULAR_BALL = set([
         "Teddiursa", "Tentacool", "Tentacruel", "Thwackey", "Timburr", "Togepi", "Togetic",
         "Torracat", "Treecko", "Toxapex", "Trevenant", "Vikavolt", "Wartortle", "Wishiwashi", 
         "Wimpod", "Hakamo-o", "Jangmo-o", "Sirfetch'd", "Mime Jr.", "Mr. Mime",
-        "Sliggoo", "Voltorb", "Wyrdeer", "Zoroark", "Kleavor"
+        "Sliggoo", "Voltorb", "Wyrdeer", "Zorua", "Zoroark", "Kleavor"
 ])
 
 REPEAT_BALL = set([
