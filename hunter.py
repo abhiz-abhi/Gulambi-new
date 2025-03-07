@@ -456,7 +456,7 @@ class PokemonHuntingEngine:
 
         elif "A wild" in event.raw_text:
             self.activity_monitor.record_activity(activity_type=ActivityType.RESPONSE_RECEIVED)
-            pok_name = event.raw_text.split("wild ")[1].split(" (")[0].strip()
+            pok_name = re.search(r"A wild (.+?) \(", event.raw_text)
             logger.debug(f"Wild Pokemon encountered: {pok_name}")
             for ball_name in POKEBALL_BUTTON_TEXT_MAP:
                 if pok_name in getattr(constants, f'{ball_name.upper()}_BALL', []):
@@ -476,11 +476,10 @@ class PokemonHuntingEngine:
     async def battlefirst(self, event):
         substring = 'Battle begins!'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild (\w+) \[.*\]\nLv\. \d+  •  HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
           if wild_pokemon_name_match:
             pok_name = wild_pokemon_name_match.group(1).strip()
-            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+  •  HP (\d+)/(\d+)", event.raw_text)
-
+            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+\s+•\s+HP (\d+)/(\d+)", event.raw_text)
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 if wild_max_hp <= 95:
@@ -503,18 +502,19 @@ class PokemonHuntingEngine:
                         logger.exception(f'Unexpected error clicking first option for high-level {pok_name}: {e}')
             else:
                 logger.warning(f"Wild Pokemon HP info not found in battle message for {pok_name}.")
+                await event.click(0, 0)
 
     async def battle(self, event):
         substring = 'Wild'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild (\w+) \[.*\]\nLv\. \d+  •  HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
           if wild_pokemon_name_match:
             pok_name = wild_pokemon_name_match.group(1)
-            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+  •  HP (\d+)/(\d+)", event.raw_text)
+            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+\s+•\s+HP (\d+)/(\d+)", event.raw_text)
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 wild_current_hp = int(wild_pokemon_hp_match.group(1))
-                wild_health_percentage = self._calculate_health_percentage(wild_max_hp, wild_current_hp)
+                
                 if wild_current_hp > 95:
                     await asyncio.sleep(1)
                     try:
@@ -538,7 +538,7 @@ class PokemonHuntingEngine:
                 logger.info(f"Wild Pokemon {pok_name} HP not found in the battle description.")
         else:
             logger.info("Wild Pokemon name not found in the battle description.")
-
+            await event.click(0, 0)
   
     async def handle_after_battle(self, event: events.MessageEdited.Event) -> None:
         """Handles messages indicating encounter skipped (fled, caught, etc.), and records Pokeball usage on catch."""
