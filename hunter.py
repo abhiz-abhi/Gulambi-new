@@ -488,14 +488,12 @@ class PokemonHuntingEngine:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 if wild_max_hp <= 90:
                     logger.debug(f"{pok_name} is low level (HP: {wild_max_hp}), using Poke Balls directly.")
-                    await asyncio.sleep(constants.COOLDOWN())
-                    try:
-                        await event.click(text="Poke Balls")
-                        logger.info('clicked on btn poke balls')
-                    except (DataInvalidError, MessageIdInvalidError) as e:
-                        logger.warning(f'Failed to click "Poke Balls" for {pok_name}: {e}')
-                    except Exception as e:
-                        logger.exception(f'Unexpected error clicking "Poke Balls" for {pok_name}: {e}')
+                    await asyncio.sleep(constants.COOLDOWN()
+                    await event.click(text="Poke Balls")
+                    logger.info('clicked on btn poke balls')
+                    for _ in range(5):  # Click ball 5 times
+                      await asyncio.sleep(constants.COOLDOWN()
+                      await event.click(text="Poke Balls") 
                 else:
                     await asyncio.sleep(2)
                     try:
@@ -534,10 +532,12 @@ class PokemonHuntingEngine:
                                 await event.click(0, 0)
 
                         elif wild_current_hp <= 90:
-                            await asyncio.sleep(1)
-                            if event.message:  # Ensure message exists before clicking
-                                await event.click(text="Poke Balls")
-                                await asyncio.sleep(1)
+                            await asyncio.sleep(constants.COOLDOWN()
+                            await event.click(text="Poke Balls")
+                            logger.info('clicked on btn poke balls')
+                            for _ in range(5):  # Click ball 5 times
+                               await asyncio.sleep(constants.COOLDOWN()
+                               await event.click(text="Poke Balls")
 
                                 ball_type = None
                                 if pok_name in constants.REGULAR_BALL:
