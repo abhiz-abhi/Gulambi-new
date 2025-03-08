@@ -322,16 +322,6 @@ class PokemonHuntingEngine:
             logger.info(f'[{self.__class__.__name__}] Registered event handler: `{callback.__name__}`')
 
 
-    def _calculate_health_percentage(self, max_hp: int, current_hp: int) -> int:
-        """Calculates health percentage, handling potential errors."""
-        if max_hp <= 0:
-            raise ValueError("Total health must be greater than zero.")
-        if current_hp < 0 or current_hp > max_hp:
-            raise ValueError("Current health must be between 0 and the total health.")
-        health_percentage = round((current_hp / max_hp) * 100)
-        return health_percentage
-
-
     async def _reload_message(self, event) -> Optional[Message]:
         try:
             await asyncio.sleep(1)
@@ -487,24 +477,20 @@ class PokemonHuntingEngine:
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 if wild_max_hp <= 90:
-                    logger.debug(f"{pok_name} is low level (HP: {wild_max_hp}), using Poke Balls directly.")
+                    logger.debug(f"{pok_name} is low level (HP: {wild_max_hp})")
                     await asyncio.sleep(constants.COOLDOWN())
                     await event.click(text="Poke Balls")
                     logger.info('clicked on btn poke balls')
-                    for _ in range(5):  # Click ball 5 times
+                    for _ in range(5):
                       await asyncio.sleep(constants.COOLDOWN())
                       await event.click(text="Poke Balls") 
                 else:
-                    await asyncio.sleep(2)
-                    try:
-                        await event.click(0, 0)
-                    except (DataInvalidError, MessageIdInvalidError) as e:
-                        logger.warning(f'Failed to click first option for high-level {pok_name}: {e}')
-                    except Exception as e:
-                        logger.exception(f'Unexpected error clicking first option for high-level {pok_name}: {e}')
-            else:
-                logger.warning(f"Wild Pokemon HP info not found in battle message for {pok_name}.")
-
+                    await asyncio.sleep(constants.COOLDOWN())
+                    await event.click(0, 0)
+                    for _ in range(5): 
+                      await asyncio.sleep(constants.COOLDOWN())
+                      await event.click(0, 0)
+                                        
     async def battle(self, event):
         substring = 'Wild'
     
@@ -520,22 +506,20 @@ class PokemonHuntingEngine:
                     wild_current_hp = int(wild_pokemon_hp_match.group(1))
                     health_percentage = (wild_current_hp / wild_max_hp) * 100
 
-                    logger.info(f"{pok_name} health: {wild_current_hp}/{wild_max_hp} ({health_percentage:.2f}%)")
-
+                    logger.info(f"{pok_name} health: {wild_current_hp}/{wild_max_hp}")
                     try:
                         if wild_current_hp > 90:
-                            for _ in range(5):  # Click 5 times
-                                await asyncio.sleep(1)
-                                if not event.message:  # Check if the message still exists
-                                    logger.warning(f"Message disappeared while clicking for {pok_name}. Skipping.")
-                                    return
+                            await asyncio.sleep(constants.COOLDOWN())
+                            await event.click(0, 0)
+                            for _ in range(5): 
+                                await asyncio.sleep(constants.COOLDOWN())
                                 await event.click(0, 0)
-
+                                                             
                         elif wild_current_hp <= 90:
                             await asyncio.sleep(constants.COOLDOWN())
                             await event.click(text="Poke Balls")
                             logger.info('clicked on btn poke balls')
-                            for _ in range(5):  # Click ball 5 times
+                            for _ in range(5):  
                                await asyncio.sleep(constants.COOLDOWN())
                                await event.click(text="Poke Balls")
 
@@ -546,7 +530,7 @@ class PokemonHuntingEngine:
                                     ball_type = "Repeat"
 
                                if ball_type:
-                                    for _ in range(5):  # Click ball 5 times
+                                    for _ in range(5):  
                                         await asyncio.sleep(1)
                                         if not event.message:
                                             logger.warning(f"Message disappeared before clicking {ball_type} for {pok_name}.")
