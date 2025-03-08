@@ -488,11 +488,11 @@ class PokemonHuntingEngine:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 if wild_max_hp <= 90:
                     logger.debug(f"{pok_name} is low level (HP: {wild_max_hp}), using Poke Balls directly.")
-                    await asyncio.sleep(constants.COOLDOWN()
+                    await asyncio.sleep(constants.COOLDOWN())
                     await event.click(text="Poke Balls")
                     logger.info('clicked on btn poke balls')
                     for _ in range(5):  # Click ball 5 times
-                      await asyncio.sleep(constants.COOLDOWN()
+                      await asyncio.sleep(constants.COOLDOWN())
                       await event.click(text="Poke Balls") 
                 else:
                     await asyncio.sleep(2)
@@ -532,20 +532,20 @@ class PokemonHuntingEngine:
                                 await event.click(0, 0)
 
                         elif wild_current_hp <= 90:
-                            await asyncio.sleep(constants.COOLDOWN()
+                            await asyncio.sleep(constants.COOLDOWN())
                             await event.click(text="Poke Balls")
                             logger.info('clicked on btn poke balls')
                             for _ in range(5):  # Click ball 5 times
-                               await asyncio.sleep(constants.COOLDOWN()
+                               await asyncio.sleep(constants.COOLDOWN())
                                await event.click(text="Poke Balls")
 
-                                ball_type = None
-                                if pok_name in constants.REGULAR_BALL:
+                               ball_type = None
+                               if pok_name in constants.REGULAR_BALL:
                                     ball_type = "Regular"
-                                elif pok_name in constants.REPEAT_BALL:
+                               elif pok_name in constants.REPEAT_BALL:
                                     ball_type = "Repeat"
 
-                                if ball_type:
+                               if ball_type:
                                     for _ in range(5):  # Click ball 5 times
                                         await asyncio.sleep(1)
                                         if not event.message:
