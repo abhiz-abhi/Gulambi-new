@@ -65,7 +65,7 @@ AFK_COMMAND_REGEX = r'^\.afk(?: |$)(.*)'  # Matches `.afk` or `.afk <message>`
 UNAFK_COMMAND_REGEX = r'^\.unafk$'  # Matches `.unafk`
 
 # Timing and Limits
-COOLDOWN = lambda: random.randint(2, 4)  # Random cooldown between 3 and 6 seconds
+COOLDOWN = lambda: random.randint(4, 6)  # Random cooldown between 3 and 6 seconds
 PERIODICALLY_GUESS_SECONDS = 20 # Guess cooldown
 PERIODICALLY_HUNT_SECONDS = 180  # Hunt cooldown 
 HEXA_BOT_ID = 572621020  # ID of the Hexa bot
