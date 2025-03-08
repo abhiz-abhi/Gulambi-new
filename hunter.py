@@ -464,12 +464,12 @@ class PokemonHuntingEngine:
     async def battlefirst(self, event):
         substring = 'Battle begins!'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild\s+([^\[]+?)\s*\[.*\]\s*Lv\.\s*\d+\s*•\s*HP\s*\d+/\d+", event.raw_text)
           
           if wild_pokemon_name_match:
             pok_name = wild_pokemon_name_match.group(1).strip()
             
-            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+\s+•\s+HP (\d+)/(\d+)", event.raw_text)
+            wild_pokemon_hp_match = regex.search(r"Wild\s+.*?\s*\[.*?\]\s*Lv\.\s*\d+\s*•\s*HP\s*(\d+)/(\d+)", event.raw_text)
 
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
@@ -500,10 +500,10 @@ class PokemonHuntingEngine:
     async def battle(self, event):
         substring = 'Wild'
         if substring in event.raw_text and self.automation_orchestrator.is_automation_active:
-          wild_pokemon_name_match = regex.search(r"Wild ([^\[]+?)\s*\[.*\]\nLv\. \d+\s+•\s+HP \d+/\d+", event.raw_text)
+          wild_pokemon_name_match = regex.search(r"Wild\s+([^\[]+?)\s*\[.*\]\s*Lv\.\s*\d+\s*•\s*HP\s*\d+/\d+", event.raw_text)
           if wild_pokemon_name_match:
             pok_name = wild_pokemon_name_match.group(1).strip()
-            wild_pokemon_hp_match = regex.search(r"Wild .* \[.*\]\nLv\. \d+  •  HP (\d+)/(\d+)", event.raw_text)
+            wild_pokemon_hp_match = regex.search(r"Wild\s+.*?\s*\[.*?\]\s*Lv\.\s*\d+\s*•\s*HP\s*(\d+)/(\d+)", event.raw_text)
             if wild_pokemon_hp_match:
                 wild_max_hp = int(wild_pokemon_hp_match.group(2))
                 wild_current_hp = int(wild_pokemon_hp_match.group(1))
